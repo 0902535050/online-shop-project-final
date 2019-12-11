@@ -21,7 +21,8 @@ app.use(flash());
 
 const STORE = new SessionStore({
     uri:
-    "mongodb://localhost:27017/online-shop",
+    //"mongodb://localhost:27017/online-shop",
+    "mongodb+srv://thanhtuan090398:Tuan09031998@cluster0-jodk9.mongodb.net/online-shop?retryWrites=true&w=majority",
     collection: "sessions"
 });
 

@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const DB_URL =
-"mongodb://localhost:27017/online-shop";
+//"mongodb://localhost:27017/online-shop";
+"mongodb+srv://thanhtuan090398:Tuan09031998@cluster0-jodk9.mongodb.net/online-shop?retryWrites=true&w=majority";
 const userSchema = mongoose.Schema({
     username: String,
     email: String,

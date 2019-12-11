@@ -73,7 +73,6 @@
                         <input type="hidden" name="redirectTo" value="/">
                         <input type="submit" value="Add to cart" class="btn btn-primary">
                     </form>
-
                 </div>
             </div>
         </div>
@@ -116,20 +115,16 @@
                 <div class="row">
                     <div class="underline-green"></div>
                 </div>
-                <% for(let product of products) {
-                    if (product.category === "mostWanted") { %>
+                <% for(let product of products) if (product.category === "mostWanted") { %>
                 <div class="media mt-5">
                     <img src="<%= product.image%>" class="img-fluid mr-3" alt="media1">
                     <div class="media-body mt-2">
                         <h5><%= product.name%></h5>
                         <h6 class="price"><%= product.price%> $</h6>
-                        <form action="cart" method="POST" class="card-img-top">
-                            <input type="number" name="amount" class="form-control">
-                            <input type="submit" value="Add to cart" class="btn btn-primary">
-                        </form>
+                        <h6 class="description"><%= product.description%></h6>
                     </div>
                 </div>
-                <% } } %>
+                <% } %>
             </div>
 
             <div class="col-md-4">
@@ -146,10 +141,7 @@
                     <div class="media-body mt-2">
                         <h5><%= product.name%></h5>
                         <h6><%= product.price%> $</h6>
-                        <form action="cart" method="POST" class="card-img-top">
-                            <input type="number" name="amount" class="form-control">
-                            <input type="submit" value="Add to cart" class="btn btn-primary">
-                        </form>
+                        <h6 class="description"><%= product.description%></h6>
                     </div>
                 </div>
                 <% } } %>
@@ -171,10 +163,7 @@
                     <div class="media-body mt-2">
                         <h5><%= product.name%></h5>
                         <h6><%= product.price%> $</h6>
-                        <form action="cart" method="POST" class="card-img-top">
-                            <input type="number" name="amount" class="form-control">
-                            <input type="submit" value="Add to cart" class="btn btn-primary">
-                        </form>
+                        <h6 class="description"><%= product.description%></h6>
                     </div>
                 </div>
                 <% } } %>
@@ -199,22 +188,19 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-3">
-                <% for(let product of products) {
+            <% for(let product of products) {
                 if (product.category === "featured") { %>
+            <div class="col-md-3">
                 <div class="card">
                     <img src="<%= product.image%>" class="img-fluid mr-3" alt="media1">
                     <div class="card-body">
                         <h4><%= product.name%></h4>
-                        <h6><%= product.price%></h6>
-                        <form action="cart" method="POST" class="card-img-top">
-                            <input type="number" name="amount" class="form-control">
-                            <input type="submit" value="Add to cart" class="btn btn-primary">
-                        </form>
+                        <h6><%= product.price%> $</h6>
+                        <h6 class="description"><%= product.description%></h6>
                     </div>
                 </div>
-                <% } } %>
             </div>
+            <% } } %>
         </div>
     </div>
 </div>
@@ -232,19 +218,19 @@
 
 <div class="container pb-5 blog">
     <div class="row">
+        <% for(let product of products) {
+        if (product.category === "fromTheBlog") { %>
         <div class="col-md-6">
-            <% for(let product of products) {
-            if (product.category === "fromTheBlog") { %>
             <div class="media mt-5">
                 <img src="<%= product.image%>" class="img-fluid mr-3" alt="media1">
                 <div class="media-body mt-2">
                     <h4><%= product.name%></h4>
-                    <p><%= product.price%></p>
+                    <p><%= product.price%> $</p>
                     <p><i class="fa fa-user" aria-hidden="true"></i> admin. Date: 12-2-2018</p>
                 </div>
             </div>
-            <% } } %>
         </div>
+        <% } } %>
     </div>
 
     <div class="container-fluid pt-5 pb-5 bg-light-gray">
@@ -259,22 +245,19 @@
 
         <div class="container pt-5">
             <div class="row">
+                <% for(let product of products) {
+            if (product.category === "trends") { %>
                 <div class="col-md-3">
-                    <% for(let product of products) {
-                if (product.category === "trends") { %>
                     <div class="card">
                         <img src="<%= product.image%>" class="img-fluid mr-3" alt="media1">
                         <div class="card-body">
                             <h4><%= product.name%></h4>
                             <h6><%= product.price%> $</h6>
-                            <form action="cart" method="POST" class="card-img-top">
-                                <input type="number" name="amount" class="form-control">
-                                <input type="submit" value="Add to cart" class="btn btn-primary">
-                            </form>
+                            <h6 class="description"><%= product.description%></h6>
                         </div>
                     </div>
-                    <% } } %>
                 </div>
+                <% } } %>
             </div>
         </div>
     </div>
