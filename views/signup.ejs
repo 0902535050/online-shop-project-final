@@ -1,0 +1,57 @@
+<%- include('parts/header')%>
+<%- include('parts/navbar')%>
+<link rel="stylesheet" href="/stylesheets/signup.css">
+
+<div class="container register-form" style="margin-top:30px;">
+    <div class="form">
+        <div class="note">
+            <p>Create your account</p>
+        </div>
+
+        <div class="form-content">
+            <form action="/signup" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img src="../stylesheets/logo-user-animation.gif" style="width: 80%;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name *" name="username" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail *" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" name="password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Confirm Password *"
+                                name="confirmPassword" />
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Create Account" class="btn btn-primary">
+                <br>
+                <div>
+                    Already have account ? <a href="/login">Login</a>
+                </div>
+            </form>
+            <% if(authError) { %>
+            <br>
+            <p class="alert alert-danger">
+                <%= authError%>
+            </p>
+            <% } %>
+
+            <% for (let error of validationErrors) {%>
+            <p class="alert alert-danger">
+                <%= error.msg%>
+            </p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('parts/footer')%>

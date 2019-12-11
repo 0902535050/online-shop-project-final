@@ -1,0 +1,63 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <% if(items.length === 0) { %>
+            <p class="alert alert-danger">There is no items</p>
+            <% } else { %>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < items.length; i++) { %>
+                    <tr>
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                        src="<%= items[i].image%>" style="width: 72px; height: 72px;"> </a>
+                                <div class="media-body" style="margin-left: 30px;">
+                                    <h5 class="media-heading"><a
+                                            href="/product/<%= items[i].productId %>"><%= items[i].name %></a></h5>
+                                    <% if(items[i].category === "Thief") { %>
+                                    <span>Status: </span><span class="text-success"><strong>NEW</strong></span>
+                                    <% } else { %>
+                                    <span>Status: </span><span class="text-warning"><strong>OLD</strong></span>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </td>
+                        <form method="POST">
+                            <td class="col-sm-1 col-md-1" style="text-align: center"><%= items[i].amount %></td>
+                            <td class="col-sm-1 col-md-1 text-center"><%= items[i].price %>$</td>
+                            <td class="col-sm-1 col-md-1 text-center"><%= items[i].price*items[i].amount %>$</td>
+                            <td class="col-sm-1 col-md-1">
+                                <input type="hidden" name="cartId" value="<%= items[i]._id %>">
+                                <input type="hidden" name="image" value="<%= items[i].image %>">
+                                <input type="hidden" name="category" value="<%= items[i].category %>">
+                                <input style="width:100%" type="submit" class="btn btn-success" value="Save" formaction="/cart/save">
+                                <a style="width:100%" class="btn btn-primary" href="/verify-order?order=<%= items[i]._id %>"> Order </a>
+                                <input type="submit" class="btn btn-danger" value="Delete" formaction="/cart/delete">
+                            </td>
+                        </form>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('parts/footer') %>

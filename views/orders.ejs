@@ -1,0 +1,61 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <% if(items.length === 0) { %>
+                <p class="alert alert-danger">There is no items</p>
+                <% } else { %>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Address</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < items.length; i++) { %>
+                        <tr>
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                            src="<%= items[i].image%>" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body" style="margin-left: 30px;">
+                                        <h5 class="media-heading"><a
+                                                href="/product/<%= items[i].productId %>"><%= items[i].name %></a></h5>
+                                        <% if(items[i].category === "allProductTop") { %>
+                                        <span>Status: </span><span class="text-success"><strong>OLD</strong></span>
+                                        <% } else { %>
+                                        <span>Status: </span><span class="text-warning"><strong>NEW</strong></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </td>
+                            <form method="POST">
+                                <td class="col-sm-1 col-md-1" style="text-align: center"><%= items[i].amount %></td>
+                                <td class="col-sm-1 col-md-1 text-center"><%= items[i].price %>$</td>
+                                <td class="col-sm-1 col-md-1 text-center"><%= items[i].price*items[i].amount %>$</td>
+                                <td class="col-sm-1 col-md-1 text-center"><%= items[i].address %>$</td>
+                                <td class="col-sm-1 col-md-1 text-center"><%= items[i].status %>$</td>
+                                <td class="col-sm-1 col-md-1">
+                                        <input type="hidden" name="orderId" value="<%= items[i]._id %>">
+                                        <input type="submit" class="btn btn-danger" value="Cancel" formaction="/orders/cancel">
+                                </td>
+                            </form>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+<%- include('parts/footer') %>
