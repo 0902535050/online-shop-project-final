@@ -55,40 +55,40 @@
 
 @keyframes slide {
     0%{
-        background-image: url("image1.jpeg");
+        background-image: url("1.jpg");
     }
     20%{
-        background-image: url("image1.jpeg");
+        background-image: url("1.jpg");
     }
 
     20.01%{
-        background-image: url("image2.jpeg");
+        background-image: url("2.jpg");
     }
 
     40%{
-        background-image: url("image2.jpeg");
+        background-image: url("2.jpg");
     }
 
     40.01%{
-        background-image: url("image3.jpeg");
+        background-image: url("3.jpg");
     }
 
     60%{
-        background-image: url("image3.jpeg");
+        background-image: url("3.jpg");
     }
     60.01%{
-        background-image: url("image4.jpeg");
+        background-image: url("4.jpg");
     }
 
     80%{
-        background-image: url("image4.jpeg");
+        background-image: url("4.jpg");
     }
     80.01%{
-        background-image: url("image5.jpeg");
+        background-image: url("5.jpg");
     }
 
     100%{
-        background-image: url("image5.jpeg");
+        background-image: url("5.jpg");
     }
 }
 
